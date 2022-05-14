@@ -32,19 +32,22 @@ for(let i =0; i <= width; i = i+scaleX){
         
         
         if(dy > 0){
-            ctx.strokeStyle = '#fbb021';
+            ctx.strokeStyle = '#F0F000';
         }
         if(dy > 1){
-            ctx.strokeStyle = '#f68838';
+            ctx.strokeStyle = '#E27B1B';
         }
         if(dy > 2){
-            ctx.strokeStyle = '#ee3e32';
+            ctx.strokeStyle = '#E32B2B';
         }
         if(dy < 0){
-            ctx.strokeStyle = '#89CFF0';
+            ctx.strokeStyle = '#BECA39';
         }
         if(dy < -1){
-            ctx.strokeStyle = '#1d4877';
+            ctx.strokeStyle = '#816D9C';
+        }
+        if(dy < -2){
+            ctx.strokeStyle = '#562BE3';
         }
 
         //Drawing
