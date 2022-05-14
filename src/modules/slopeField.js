@@ -12,23 +12,48 @@ const yAxis = Math.round(height / scaleX / 2) * scaleY;
 
 
 
-ctx.fillStyle = 'green'
-ctx.strokeStyle = '#FF00FF';
-ctx.lineWidth = 2
+ctx.fillStyle = '#000'
+ctx.lineWidth = 3
 
-ctx.beginPath()
 for(let i =0; i <= width; i = i+scaleX){
 
     for(let j=0; j<= height; j = j+scaleY){
 
-        const dy = ((i - xAxis)/scaleX) - ((yAxis - j)/scaleY)
-        ctx.fillText(dy,i-10,j)
+        const x = (i - xAxis)/scaleX;
+        const y = (yAxis - j)/scaleY
 
+        //Main equation
+        const dy = -x/y
+
+        //visualisation
+        const length = Math.sqrt(Math.pow(((i+10) - i),2) + Math.pow(((j-dy*10)-j),2))
+        ctx.fillText(Math.round(length*10/14)/10,i-10,j)
+        console.log(Math.round(dy))
+        
+        
+        if(dy > 0){
+            ctx.strokeStyle = '#fbb021';
+        }
+        if(dy > 1){
+            ctx.strokeStyle = '#f68838';
+        }
+        if(dy > 2){
+            ctx.strokeStyle = '#ee3e32';
+        }
+        if(dy < 0){
+            ctx.strokeStyle = '#89CFF0';
+        }
+        if(dy < -1){
+            ctx.strokeStyle = '#1d4877';
+        }
+
+        //Drawing
+        ctx.beginPath()
         ctx.moveTo(i, j);
-        ctx.lineTo(i + 10, j - dy * 10);
-
+        ctx.lineTo(i + (200/length), j - (dy/length) * 200);
+        ctx.stroke()
+        ctx.closePath()
     }
 
 }
-ctx.stroke()
-ctx.closePath()
+
